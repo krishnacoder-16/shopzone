@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 
 function Navbar() {
+  const { cartItems } = useContext(CartContext);
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,0
+  );
+
   return (
     <nav className="bg-gray-900 text-white p-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -14,7 +22,7 @@ function Navbar() {
             Shop
           </Link>
           <Link to="/cart" className="hover:text-gray-300">
-            Cart
+            Cart ({totalItems})
           </Link>
           <Link to="/contact" className="hover:text-gray-300">
             Contact
