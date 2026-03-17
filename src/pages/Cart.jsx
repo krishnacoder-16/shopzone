@@ -1,8 +1,14 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart } from "../redux/cartSlice";
 
 function Cart() {
-  const { cartItems, removeFromCart, totalPrice } = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
+  
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   if (cartItems.length === 0) {
     return (
@@ -29,7 +35,7 @@ function Cart() {
           </div>
 
           <button
-            onClick={() => removeFromCart(item.id)}
+            onClick={() => dispatch(removeFromCart(item.id))}
             className="bg-red-500 text-white px-4 py-2 rounded"
           >
             Remove

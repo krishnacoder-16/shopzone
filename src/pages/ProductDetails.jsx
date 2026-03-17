@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleProduct } from "../services/api";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { addToCart } = useContext(CartContext);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -39,7 +37,7 @@ function ProductDetails() {
           <p className="text-2xl font-semibold mb-6">${product.price}</p>
           
           <button
-            onClick={() => addToCart(product)}
+            onClick={() => dispatch(addToCart(product))}
             className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800"
           >
             Add to Cart

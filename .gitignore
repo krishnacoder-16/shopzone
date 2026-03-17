@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Desktop.ini
+desktop.ini
+
+# shopzone-made with clipchamp.mp4
+shopzone - made with clipchamp.mp4
