@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../services/api";
 import ProductCard from "../components/ProductCard";
@@ -20,15 +20,31 @@ function Shop() {
     getProducts();
   }, []);
 
-  // Extract unique categories for the dropdown
-  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  // Memoize categories to prevent recalculation on every render
+  const categories = useMemo(
+    () => ["All", ...new Set(products.map((p) => p.category))],
+    [products] // Only recalculate when the fetched products array changes
+  );
 
-  // Apply filters instantly before rendering
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory = category === "All" || product.category === category;
-    const matchesPrice = product.price <= maxPrice;
-    return matchesCategory && matchesPrice;
-  });
+  // Memoize filter logic so we don't iterate arrays unnecessarily
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesCategory = category === "All" || product.category === category;
+      const matchesPrice = product.price <= maxPrice;
+      return matchesCategory && matchesPrice;
+    });
+  }, [products, category, maxPrice]); // Only recalculate when products or filters change
+
+  // Memoize handlers to prevent creating new function instances on every render
+  const handleCategoryChange = useCallback(
+    (e) => dispatch(setCategory(e.target.value)),
+    [dispatch]
+  );
+
+  const handlePriceChange = useCallback(
+    (e) => dispatch(setMaxPrice(Number(e.target.value))),
+    [dispatch]
+  );
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -43,7 +59,7 @@ function Shop() {
           </label>
           <select
             value={category}
-            onChange={(e) => dispatch(setCategory(e.target.value))}
+            onChange={handleCategoryChange}
             className="border p-2 rounded-md outline-none focus:ring-2 focus:ring-black"
           >
             {categories.map((cat) => (
@@ -67,7 +83,7 @@ function Shop() {
               max="2000"
               step="10"
               value={maxPrice}
-              onChange={(e) => dispatch(setMaxPrice(Number(e.target.value)))}
+              onChange={handlePriceChange}
               className="flex-grow cursor-pointer"
             />
             <span className="text-xs text-gray-500">$2000</span>
