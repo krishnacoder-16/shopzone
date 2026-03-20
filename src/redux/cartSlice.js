@@ -1,7 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Best Practice: Load initial state directly inside the slice file
+const loadCartFromStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('cartItems');
+    if (serializedState === null) {
+      return [];
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return [];
+  }
+};
+
 const initialState = {
-  cartItems: [],
+  cartItems: loadCartFromStorage(),
 };
 
 export const cartSlice = createSlice({
