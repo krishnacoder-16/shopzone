@@ -8,8 +8,8 @@ function Contact() {
       <div className="grid md:grid-cols-2 gap-10">
         
         {/* Contact Info Section */}
-        <div className="bg-gray-100 p-8 rounded-xl shadow-md space-y-6">
-          <h3 className="text-2xl font-semibold mb-4">
+        <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-xl shadow-md space-y-6">
+          <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
             Contact Information
           </h3>
 
@@ -35,16 +35,16 @@ function Contact() {
 
           <div>
             <p className="font-medium">📍 Address</p>
-            <p className="text-gray-600">
+            <p className="text-blue-600 hover:underline">
               123 React Street, Web City, India
             </p>
           </div>
         </div>
 
         {/* Contact Form */}
-        <form className="bg-white p-8 rounded-xl shadow-md space-y-6">
+        <form className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md space-y-6">
           <div>
-            <label className="block mb-2 font-medium">Name</label>
+            <label className="block mb-2 font-medium text-gray-900 dark:text-gray-100">Name</label>
             <input
               type="text"
               placeholder="Enter your name"

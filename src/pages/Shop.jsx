@@ -51,16 +51,16 @@ function Shop() {
       <h2 className="text-3xl font-bold mb-6">Shop Products</h2>
 
       {/* Filter Controls (UI unaffected below this row) */}
-      <div className="flex flex-col md:flex-row gap-6 mb-8 bg-white p-4 rounded-lg shadow-sm border">
+      <div className="flex flex-col md:flex-row gap-6 mb-8 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border dark:border-gray-700">
         {/* Category Filter */}
         <div className="flex flex-col">
-          <label className="text-sm font-semibold text-gray-600 mb-1">
+          <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">
             Category
           </label>
           <select
             value={category}
             onChange={handleCategoryChange}
-            className="border p-2 rounded-md outline-none focus:ring-2 focus:ring-black"
+            className="border dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white p-2 rounded-md outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
           >
             {categories.map((cat) => (
               <option key={cat} value={cat}>
@@ -72,11 +72,11 @@ function Shop() {
 
         {/* Price Filter */}
         <div className="flex flex-col w-full max-w-xs">
-          <label className="text-sm font-semibold text-gray-600 mb-1">
+          <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">
             Max Temp Price: ${maxPrice}
           </label>
           <div className="flex items-center gap-2 mt-2">
-            <span className="text-xs text-gray-500">$0</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">$0</span>
             <input
               type="range"
               min="0"
