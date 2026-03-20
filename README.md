@@ -1,88 +1,116 @@
-# 🛍️ ShopZone – E-Commerce SPA
+# 🛍️ ShopZone – Scalable E-Commerce SPA (Redux Powered)
 
 ## 📸 Project Preview
 ### User Interface
-![User Interface](src/assets/homepage.png)
-![cart page](src/assets/cart.png)
 
----
+![ShopZone Homepage](src/assets/homepage.png)
+![ShopZone Cart](src/assets/cart.png)
 
-## 🌐 Live Demo:
+**🌐 Live Demo:**
 👉 [https://shopzone-tau.vercel.app/](https://shopzone-tau.vercel.app/)
 
----
+A modern and scalable E-Commerce Single Page Application (SPA) built using React, Redux Toolkit, and React Router.
 
-A modern E-Commerce Single Page Application (SPA) built using React, React Router, and Context API.
-This project demonstrates real-world frontend architecture including:
-- Client-side routing
-- Dynamic product pages
-- Global state management
-- Cart functionality
-- Responsive UI design
+This project demonstrates real-world frontend engineering practices including:
+- Scalable global state management using Redux Toolkit
+- Dynamic routing and API integration
+- Performance optimization techniques
+- Persistent state using localStorage
+- Clean and responsive UI design
 
 ---
 
 ## 🚀 Features
 
-### ✅ Level 1 – Routing & Dynamic Pages
+### ✅ Level 1 – Redux State Management (Upgrade)
+- Migrated from Context API → Redux Toolkit
+- Centralized global store for better scalability
+- Implemented `cartSlice` with:
+  - Add to Cart
+  - Remove Item
+  - Quantity Management
+- Replaced prop drilling with `useSelector` & `useDispatch`
+- Global cart state accessible across all components
+
+### 🔍 Level 2 – Advanced Filtering System
+- Global filter state using Redux
+- Category-based filtering
+- Price range filtering (slider)
+- Real-time product updates based on filters
+- Clean separation of UI and filtering logic
+
+### ⚡ Level 3 – Performance Optimization
+- Optimized product filtering using `useMemo`
+- Prevented unnecessary re-renders
+- Improved performance for large datasets
+- Applied efficient state-driven rendering patterns
+
+### 🌙 Level 3 – Global Theme System
+- Implemented Dark/Light mode using Redux
+- Global theme state (`themeSlice`)
+- Toggle button in Navbar
+- Instant UI updates across entire app
+
+### 💾 Level 3 – Persistent Cart (localStorage)
+- Cart state persists across page reloads
+- Redux state synchronized with localStorage
+- Real-world user experience improvement
+
+### 🧭 Routing & Core Features
 - Multi-page SPA using React Router
-- Persistent Navbar across all routes
-- Product listing fetched from API
-- Dynamic route: `/product/:id`
-- Loading state handling
-- Clean, responsive product grid
+- Dynamic routing: `/product/:id`
+- Product details page with API data
+- Persistent Navbar across all pages
+- Contact page with functional UI
+- Cart page with total price calculation
 
-### ✅ Level 2 – Global Cart System (Context API)
-- Global state management using Context API
-- **Add to Cart** functionality
-- **Quantity handling** (prevents duplicate items)
-- Dynamic Navbar cart badge
-- **Cart page with:**
-  - Item listing
-  - Remove functionality
-  - Total price calculation
-  - Empty cart state handling
-
-### ✅ UI Enhancements
+### 🎨 UI & UX Enhancements
+- Responsive design using Tailwind CSS
 - Clean homepage with CTA section
-- Professional contact page with:
-  - Clickable phone number (`tel:`)
-  - Clickable email (`mailto:`)
-- Fully responsive layout using Tailwind CSS
-- Clean spacing, typography, and hover effects
+- Professional layout and spacing
+- Interactive UI with smooth updates
+- Dark/Light mode support
 
 ---
 
-## 🧠 Key Design Decisions
-- **SPA Architecture**: Ensures smooth navigation without reload.
-- **Dynamic Routing**: Handles product-specific URLs correctly.
-- **Context API**: Eliminates prop drilling and manages cart globally.
-- **API Separation**: API logic separated into `services/api.js`.
-- **Reusable Components**: `ProductCard` and `Navbar` designed for scalability.
-- **Vercel Rewrite Configuration**: Ensures SPA routes work correctly on refresh.
+## 🧠 Key Engineering Decisions
+
+- **Redux over Context API** → Better scalability and maintainability
+- **Global State Architecture** → Clean separation of concerns
+- **Memoization** → Prevent unnecessary computations
+- **Persistent Storage** → Improves user experience
+- **Component Reusability** → Scalable UI structure
+- **API Abstraction** → Clean separation of data fetching logic
 
 ---
 
-## 📂 Project Structure
+## 📂 Updated Project Structure
 ```text
 shopzone/
 │
 ├── src/
-│   ├── assets/                 # Screenshots for README
-│   │   └── ui.png
+│   ├── assets/
 │   ├── components/
 │   │   ├── Navbar.jsx
-│   │   └── ProductCard.jsx
-│   ├── context/
-│   │   └── CartContext.jsx
+│   │   ├── ProductCard.jsx
+│   │   └── FilterBar.jsx
+│   │
+│   ├── redux/
+│   │   ├── store.js
+│   │   ├── cartSlice.js
+│   │   ├── filterSlice.js
+│   │   └── themeSlice.js
+│   │
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   ├── Shop.jsx
 │   │   ├── ProductDetails.jsx
 │   │   ├── Cart.jsx
 │   │   └── Contact.jsx
+│   │
 │   ├── services/
 │   │   └── api.js
+│   │
 │   ├── App.jsx
 │   └── main.jsx
 │
@@ -98,18 +126,19 @@ shopzone/
 ---
 
 ## 🛠️ Technologies Used
-- **Frontend Framework**: React (Vite)
-- **Routing**: React Router DOM (v7)
-- **State Management**: Context API
-- **Styling**: Tailwind CSS
-- **API Source**: [DummyJSON Products API](https://dummyjson.com/products)
-- **Deployment**: Vercel
+- **Frontend:** React (Vite)
+- **State Management:** Redux Toolkit
+- **Routing:** React Router DOM
+- **Styling:** Tailwind CSS
+- **API:** [https://dummyjson.com/products](https://dummyjson.com/products)
+- **Deployment:** Vercel
 
 ---
 
 ## 🌐 API Used
-Products fetched from: [https://dummyjson.com/products](https://dummyjson.com/products)
-Used for:
+Products fetched from: 👉 [https://dummyjson.com/products](https://dummyjson.com/products)
+
+**Used for:**
 - Product listing
 - Dynamic product details
 
@@ -133,12 +162,13 @@ npm install
 npm run dev
 ```
 
-App runs at: `http://localhost:5173`
+App runs at: 👉 [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 🚀 Deployment
-Deployed on Vercel with SPA routing rewrite configuration in `vercel.json`:
+Deployed on Vercel with SPA routing support:
+
 ```json
 {
   "rewrites": [
@@ -147,23 +177,24 @@ Deployed on Vercel with SPA routing rewrite configuration in `vercel.json`:
 }
 ```
 
-**Live URL:**  
-👉 [https://shopzone-tau.vercel.app/](https://shopzone-tau.vercel.app/)
-
 ---
 
 ## 🤖 AI Assistance Disclaimer
-AI tools were used for:
-- Understanding SPA architecture
-- Structuring Context API logic
-- Debugging Tailwind & CLI issues
-- Improving folder structure and UI decisions
-- Writing professional documentation
 
-All implementation decisions were reasoned, tested, and refined manually. Detailed prompt usage is documented in [`prompts.md`](prompts.md).
+AI tools were used for:
+- Migrating Context API → Redux Toolkit
+- Designing global state architecture
+- Implementing filtering and theme system
+- Debugging UI and state issues
+- Optimizing performance
+- Structuring project and documentation
+
+All implementations were understood, tested, and refined manually.
+Detailed prompt usage is documented in `prompts.md`.
 
 ---
 
 ## 👨‍💻 Author
+
 **Krishna Kumar**  
 Frontend Developer Intern – Prodesk IT
