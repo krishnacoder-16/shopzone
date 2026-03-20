@@ -149,16 +149,171 @@ This document records how AI tools were used during the development of the ShopZ
 - Resolved environment-related CLI error
 
 ---
+## 🔄 Migration from Context API to Redux Toolkit (Week 10 – Level 1)
 
-## 🧠 Overall Reflection
+**Prompt style used:**
+> I have an existing React ShopZone project using Context API for cart. Help me migrate it to Redux Toolkit without changing UI or routing.
+
+**Purpose:**
+- Understand limitations of Context API for scaling
+- Learn Redux Toolkit architecture (store, slice, reducers)
+- Replace CartContext with cartSlice
+- Centralize global state into a single store
+- Maintain same functionality while improving architecture
+- Avoid breaking existing components during migration
+
+**Outcome:**
+- Successfully replaced Context API with Redux Toolkit
+- Implemented cartSlice with actions (add, remove, update quantity)
+- Connected components using useDispatch and useSelector
+- Improved scalability and maintainability of state
+
+---
+
+## 🛒 Redux State Integration with UI
+
+**Prompt style used:**
+> Show how to connect Redux state to existing components like Navbar, Product page, and Cart page.
+
+**Purpose:**
+- Replace Context consumption with Redux hooks
+- Ensure global state updates reflect instantly in UI
+- Maintain clean separation between UI and state logic
+- Avoid prop drilling completely
+
+**Outcome:**
+- Navbar badge updates globally
+- Cart page reflects real-time data
+- Product page dispatches actions correctly
+
+---
+
+## 🔍 Global Filtering System (Level 2)
+
+**Prompt style used:**
+> Help me implement product filtering using Redux Toolkit for category and price range.
+
+**Purpose:**
+- Introduce global filter state
+- Avoid local filtering logic inside components
+- Improve scalability for large datasets
+- Maintain clean data flow (products → filters → UI)
+
+**Outcome:**
+- Created filterSlice with category and price range
+- Implemented filter UI (dropdown + slider)
+- Products update dynamically based on global state
+- Improved user experience with real-time filtering
+
+---
+
+## ⚡ Performance Optimization (Level 3)
+
+**Prompt style used:**
+> Explain how to optimize filtering performance using useMemo and useCallback.
+
+**Purpose:**
+- Prevent unnecessary recalculations during filtering
+- Improve performance for large product lists
+- Understand React rendering behavior
+- Learn difference between memoization and normal computation
+
+**Outcome:**
+- Used useMemo to cache filtered products
+- Reduced unnecessary re-renders
+- Improved responsiveness of UI during filter changes
+
+---
+
+## 🌙 Global Theme Management (Dark/Light Mode)
+
+**Prompt style used:**
+> Help me implement a global theme system using Redux Toolkit with a toggle button.
+
+**Purpose:**
+- Manage UI theme globally using Redux
+- Understand how global UI state differs from business logic
+- Apply theme dynamically to entire app
+- Improve user experience with dark/light mode
+
+**Outcome:**
+- Created themeSlice
+- Implemented toggle functionality
+- Applied theme at root level
+- UI updates instantly across all pages
+
+---
+
+## 💾 Cart Persistence using localStorage (Level 3)
+
+**Prompt style used:**
+> My Redux cart resets on refresh. Help me persist cart using localStorage.
+
+**Purpose:**
+- Understand difference between temporary state and persistent state
+- Learn how to hydrate Redux state from localStorage
+- Sync Redux updates with browser storage
+- Simulate real-world app behavior
+
+**Outcome:**
+- Cart state saved in localStorage
+- Cart restored on page reload
+- Improved user experience with persistent data
+
+---
+
+## 🐞 Debugging UI & State Issues
+
+**Prompt style used:**
+> My navbar alignment, theme toggle, and filter bar are not working properly. Help me debug step-by-step.
+
+**Purpose:**
+- Identify UI breakages after state migration
+- Fix layout issues using Flexbox
+- Debug missing state connections
+- Resolve conditional rendering problems
+
+**Outcome:**
+- Fixed navbar alignment
+- Implemented working theme toggle
+- Restored filter bar visibility and functionality
+- Improved debugging skills using structured approach
+
+---
+
+## 🧠 Advanced State Management Understanding
+
+**Prompt style used:**
+> Why is Redux better than Context API for large applications?
+
+**Purpose:**
+- Compare Context API vs Redux
+- Understand scalability concerns
+- Learn separation of concerns in frontend architecture
+- Think like a production-level engineer
+
+**Outcome:**
+- Gained clarity on when to use Redux vs Context
+- Understood importance of centralized state management
+- Improved architectural decision-making skills
+
+---
+
+## 🧠 Overall Reflection (Updated)
 
 Using AI as a structured learning assistant helped me:
-- Understand SPA architecture deeply
-- Learn dynamic routing instead of copying code
-- Implement real-world cart logic using Context API
-- Structure code professionally
-- Debug environment and dependency issues confidently
-- Think in phases and architecture, not just features
+- Build a complete SPA using React Router
+- Implement global state using Context API and later migrate to Redux Toolkit
+- Understand real-world state management patterns
+- Design scalable architecture instead of small component-based logic
+- Implement advanced features like filtering, persistence, and theming
+- Optimize performance using React hooks
+- Debug UI and state issues systematically
+- Think like a frontend engineer rather than just writing code
+
+**Key Learning:**
+I learned that building applications is not just about functionality, but about architecture, scalability, and performance optimization.
 
 **✅ Final Note**
-AI tools were used to understand concepts, debug issues, and refine architecture decisions. All final implementation logic was written after reasoning and testing to ensure genuine understanding and professional development practice.
+AI tools were used to guide architecture, debug issues, and understand advanced concepts like Redux and performance optimization.
+All implementations were done after understanding the logic, testing behavior, and refining structure to ensure real learning and professional development.
